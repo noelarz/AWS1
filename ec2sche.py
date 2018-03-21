@@ -5,7 +5,7 @@ import os
 import pprint
 
 ec = boto3.client('ec2')
-os.environ['TZ'] = 'America/Chicago'
+os.environ['TZ'] = 'America/New_York'
 pp = pprint.PrettyPrinter(indent=4)
 
 def lambda_handler(event, context):

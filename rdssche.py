@@ -5,7 +5,7 @@ import os
 import pprint
 
 rds = boto3.client('rds')
-os.environ['TZ'] = 'America/Chicago'
+os.environ['TZ'] = 'America/New_York'
 pp = pprint.PrettyPrinter(indent=4)
 
 def lambda_handler(event, context):
