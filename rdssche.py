@@ -17,7 +17,7 @@ def lambda_handler(event, context):
     
     dbs = rds.describe_db_instances()
     for db in dbs['DBInstances']:
-        db_id = db['DBInstanceIdentifier']
+        db_id = db['DBClusterIdentifier']
         db_name = db['DBName']
         db_all = dbs['DBInstances']
         db_arn = db['DBInstanceArn']
@@ -73,7 +73,7 @@ def lambda_handler(event, context):
         if ( HourOfDay == onhour ):
                 if ( MinuteOfDay == onminute ):
                     if ( leaveon == "0" ) or ( leaveon == ""):
-                        pp.pprint(rds.start_db_instance(DBInstanceIdentifier=db_id))
+                        pp.pprint(rds.start_db_cluster(DBClusterIdentifier=db_id))
                     else:
                         leaveon = int(leaveon)
                         leaveon = leaveon-1
@@ -91,7 +91,7 @@ def lambda_handler(event, context):
         if ( HourOfDay == offhour ):
                 if (MinuteOfDay == offminute ):
                         if ( leaveoff == "0" ) or ( leaveoff == ""):
-                            pp.pprint(rds.stop_db_instance(DBInstanceIdentifier=db_id))
+                            pp.pprint(rds.stop_db_cluster(DBClusterIdentifier=db_id))
                             print "more stuff"
                         else:
                             leaveoff = int(leaveoff)
